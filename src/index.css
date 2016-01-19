@@ -1,0 +1,16 @@
+.page{
+    padding-top: 60px;
+}
+
+.tab-com{
+    margin: 10px 1px 1px 1px;
+}
+
+.ctab > a {
+    outline: none;
+}
+
+.code-text{
+    width: 100%;
+    height: 400px;
+}

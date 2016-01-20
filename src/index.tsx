@@ -19,19 +19,29 @@ const Tab = require("react-bootstrap").Tab;
 const Tabs = require("react-bootstrap").Tabs;
 
 import {BasicExample} from "./basic-example";
+import "./basic-example/index.css";
 const BasicExampleSrc = require("!raw!./basic-example/index");
 const BasicExampleCss = require("!raw!./basic-example/index.css");
+
+import {EditCell} from "./edit-cell";
+import "./edit-cell/index.css";
+const EditCellSrc = require("!raw!./edit-cell/index");
+const EditCellCss = require("!raw!./edit-cell/index.css");
 
 interface State {
     hash: string;
 }
 
 const BASIC_EXAMPLE_HASH = "#basic-example";
+const EDIT_CELL_HASH = "#edit-cell";
 
 
 function pickDemo(hash:string){
     if (hash === BASIC_EXAMPLE_HASH){
         return <BasicExample />;
+    }
+    if (hash === EDIT_CELL_HASH){
+        return <EditCell />;
     }
     return <div/>;
 }
@@ -40,12 +50,18 @@ function pickSrc(hash:string){
     if (hash === BASIC_EXAMPLE_HASH){
         return BasicExampleSrc;
     }
+    if (hash === EDIT_CELL_HASH){
+        return EditCellSrc;
+    }
     return "";
 }
 
 function pickCss(hash:string){
     if (hash === BASIC_EXAMPLE_HASH){
         return BasicExampleCss;
+    }
+    if (hash === EDIT_CELL_HASH){
+        return EditCellCss;
     }
     return "";
 }

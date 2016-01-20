@@ -26,22 +26,25 @@ interface State {
     hash: string;
 }
 
+const BASIC_EXAMPLE_HASH = "#basic-example";
+
+
 function pickDemo(hash:string){
-    if (hash === "#basic-example"){
+    if (hash === BASIC_EXAMPLE_HASH){
         return <BasicExample />;
     }
     return <div/>;
 }
 
 function pickSrc(hash:string){
-    if (hash === "#basic-example"){
+    if (hash === BASIC_EXAMPLE_HASH){
         return BasicExampleSrc;
     }
     return "";
 }
 
 function pickCss(hash:string){
-    if (hash === "#basic-example"){
+    if (hash === BASIC_EXAMPLE_HASH){
         return BasicExampleCss;
     }
     return "";
@@ -58,7 +61,6 @@ class Main extends React.Component<{}, State>{
     }
     render() {
         const hash = this.state.hash;
-        console.log(hash);
         return (
             <div>
                 <Navbar inverse={true} fixedTop={true}>
@@ -77,7 +79,7 @@ class Main extends React.Component<{}, State>{
                 <Grid className="page">
                     <Col xs={12} md={2}>
                         <Nav bsStyle="pills" stacked activeKey={hash}>
-                            <NavItem eventKey={"#basic-example"} href="#basic-example">Basic Example</NavItem>
+                            <NavItem eventKey={BASIC_EXAMPLE_HASH} href={BASIC_EXAMPLE_HASH}>Basic Example</NavItem>
                             <NavItem eventKey={"#edit-cell"} href="#edit-cell">Edit Cell</NavItem>
                             <NavItem eventKey={"#calc-cell"} href="#calc-cell">Calc Cell</NavItem>
                             <NavItem eventKey={"#hide-header"} href="#hide-header">Hide Header</NavItem>

@@ -5,8 +5,7 @@ import {
     CellPoint,
     CellRange,
     TEXT_ALIGN,
-    VERTICAL_ALIGN,
-    BORDER_POSITION
+    VERTICAL_ALIGN
 } from "react-gridview";
 
 function createSheet() {

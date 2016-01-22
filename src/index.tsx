@@ -28,42 +28,58 @@ import "./edit-cell/index.css";
 const EditCellSrc = require("!raw!./edit-cell/index");
 const EditCellCss = require("!raw!./edit-cell/index.css");
 
+import {EditBorder} from "./edit-border";
+import "./edit-border/index.css";
+const EditBorderSrc = require("!raw!./edit-border/index");
+const EditBorderCss = require("!raw!./edit-border/index.css");
+
+
 interface State {
     hash: string;
 }
 
 const BASIC_EXAMPLE_HASH = "#basic-example";
 const EDIT_CELL_HASH = "#edit-cell";
+const EDIT_BORDER_HASH = "#edit-border";
 
 
 function pickDemo(hash:string){
-    if (hash === BASIC_EXAMPLE_HASH){
-        return <BasicExample />;
+    switch(hash){
+        case BASIC_EXAMPLE_HASH:
+            return <BasicExample/>;
+        case EDIT_CELL_HASH:
+            return <EditCell/>;
+        case EDIT_BORDER_HASH:
+            return <EditBorder/>;
+        default:
+            return <div/>;
     }
-    if (hash === EDIT_CELL_HASH){
-        return <EditCell />;
-    }
-    return <div/>;
 }
 
 function pickSrc(hash:string){
-    if (hash === BASIC_EXAMPLE_HASH){
-        return BasicExampleSrc;
+    switch(hash){
+        case BASIC_EXAMPLE_HASH:
+            return BasicExampleSrc;
+        case EDIT_CELL_HASH:
+            return EditCellSrc;
+        case EDIT_BORDER_HASH:
+            return EditBorderSrc;
+        default:
+            return "";
     }
-    if (hash === EDIT_CELL_HASH){
-        return EditCellSrc;
-    }
-    return "";
 }
 
 function pickCss(hash:string){
-    if (hash === BASIC_EXAMPLE_HASH){
-        return BasicExampleCss;
+    switch(hash){
+        case BASIC_EXAMPLE_HASH:
+            return BasicExampleCss;
+        case EDIT_CELL_HASH:
+            return EditCellCss;
+        case EDIT_BORDER_HASH:
+            return EditBorderCss;
+        default:
+            return "";
     }
-    if (hash === EDIT_CELL_HASH){
-        return EditCellCss;
-    }
-    return "";
 }
 
 class Main extends React.Component<{}, State>{
@@ -96,8 +112,8 @@ class Main extends React.Component<{}, State>{
                     <Col xs={12} md={2}>
                         <Nav bsStyle="pills" stacked activeKey={hash}>
                             <NavItem eventKey={BASIC_EXAMPLE_HASH} href={BASIC_EXAMPLE_HASH}>Basic Example</NavItem>
-                            <NavItem eventKey={"#edit-cell"} href="#edit-cell">Edit Cell</NavItem>
-                            <NavItem eventKey={"#calc-cell"} href="#calc-cell">Calc Cell</NavItem>
+                            <NavItem eventKey={EDIT_CELL_HASH} href={EDIT_CELL_HASH}>Edit Cell</NavItem>
+                            <NavItem eventKey={EDIT_BORDER_HASH} href={EDIT_BORDER_HASH}>Edit border</NavItem>
                             <NavItem eventKey={"#hide-header"} href="#hide-header">Hide Header</NavItem>
                         </Nav>
                     </Col>

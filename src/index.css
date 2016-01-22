@@ -11,7 +11,7 @@
 }
 
 .code-text{
-    resize: none;
+    resize: vertical;
     width: 100%;
     height: 400px;
 }

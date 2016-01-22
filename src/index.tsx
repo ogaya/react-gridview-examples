@@ -33,6 +33,10 @@ import "./edit-border/index.css";
 const EditBorderSrc = require("!raw!./edit-border/index");
 const EditBorderCss = require("!raw!./edit-border/index.css");
 
+import {HideHeader} from "./hide-header";
+import "./hide-header/index.css";
+const HideHeaderSrc = require("!raw!./hide-header/index");
+const HideHeaderCss = require("!raw!./hide-header/index.css");
 
 interface State {
     hash: string;
@@ -41,6 +45,7 @@ interface State {
 const BASIC_EXAMPLE_HASH = "#basic-example";
 const EDIT_CELL_HASH = "#edit-cell";
 const EDIT_BORDER_HASH = "#edit-border";
+const HIDE_HEADER_HASH = "#hide-header";
 
 
 function pickDemo(hash:string){
@@ -51,6 +56,8 @@ function pickDemo(hash:string){
             return <EditCell/>;
         case EDIT_BORDER_HASH:
             return <EditBorder/>;
+        case HIDE_HEADER_HASH:
+            return <HideHeader/>;
         default:
             return <div/>;
     }
@@ -64,6 +71,8 @@ function pickSrc(hash:string){
             return EditCellSrc;
         case EDIT_BORDER_HASH:
             return EditBorderSrc;
+        case HIDE_HEADER_HASH:
+            return HideHeaderSrc;
         default:
             return "";
     }
@@ -77,6 +86,8 @@ function pickCss(hash:string){
             return EditCellCss;
         case EDIT_BORDER_HASH:
             return EditBorderCss;
+        case HIDE_HEADER_HASH:
+            return HideHeaderCss;
         default:
             return "";
     }
@@ -114,7 +125,7 @@ class Main extends React.Component<{}, State>{
                             <NavItem eventKey={BASIC_EXAMPLE_HASH} href={BASIC_EXAMPLE_HASH}>Basic Example</NavItem>
                             <NavItem eventKey={EDIT_CELL_HASH} href={EDIT_CELL_HASH}>Edit Cell</NavItem>
                             <NavItem eventKey={EDIT_BORDER_HASH} href={EDIT_BORDER_HASH}>Edit border</NavItem>
-                            <NavItem eventKey={"#hide-header"} href="#hide-header">Hide Header</NavItem>
+                            <NavItem eventKey={HIDE_HEADER_HASH} href={HIDE_HEADER_HASH}>Hide Header</NavItem>
                         </Nav>
                     </Col>
                     <Col xs={12} md={8}>

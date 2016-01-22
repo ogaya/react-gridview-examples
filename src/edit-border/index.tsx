@@ -58,7 +58,7 @@ export class EditBorder extends React.Component<{}, {}>{
     render() {
         const sheet = createSheet();
         return (
-            <GridView className="edit-cell" sheet={sheet} />
+            <GridView className="edit-border" sheet={sheet} />
         );
     }
 };

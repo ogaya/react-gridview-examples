@@ -28,19 +28,25 @@ function createSheet() {
         .editCell(CellPoint.create(3, 2), (cell) => {
             return cell
                 .setValue("merge1")
-                .setBackground("#B3E5FC")
+                .setBackground("#0D47A1")
+                .setFont("14pt Arial")
+                .setTextColor("#FFF")
                 .setTextAlign(TEXT_ALIGN.CENTER);
         })
         .editCell(CellPoint.create(5, 2), (cell) => {
             return cell
                 .setValue("merge2")
-                .setBackground("#A5D6A7")
+                .setBackground("#b71c1c")
+                .setFont("14pt Arial")
+                .setTextColor("#FFF")
                 .setTextAlign(TEXT_ALIGN.CENTER);
         })
         .editCell(CellPoint.create(2, 3), (cell) => {
             return cell
                 .setValue("merge3")
-                .setBackground("#FFCC80")
+                .setBackground("#BF360C")
+                .setFont("14pt Arial")
+                .setTextColor("#FFF")
                 .setTextAlign(TEXT_ALIGN.CENTER);
         });
 

@@ -40,6 +40,7 @@ const HideHeaderCss = require("!raw!./hide-header/index.css");
 
 interface State {
     hash: string;
+    tabKey: number;
 }
 
 const BASIC_EXAMPLE_HASH = "#basic-example";
@@ -95,12 +96,22 @@ function pickCss(hash:string){
 
 class Main extends React.Component<{}, State>{
     state: State = {
-        hash: location.hash
+        hash: location.hash,
+        tabKey: 1
     };
     componentDidMount() {
         window.onhashchange = () => {
-            this.setState({ hash: location.hash });
+            this.setState((prevState)=>{
+                prevState.hash = location.hash;
+                return prevState;
+            });
         };
+    }
+    private _tabSelect = (key)=>{
+        this.setState((prevState)=>{
+            prevState.tabKey = key;
+            return prevState;
+        });
     }
     render() {
         const hash = this.state.hash;
@@ -114,14 +125,14 @@ class Main extends React.Component<{}, State>{
                         <Navbar.Toggle />
                     </Navbar.Header>
                     <Navbar.Collapse>
-                    <Nav pullRight>
-                        <NavItem eventKey={1} href="https://github.com/ogaya/react-gridview-examples">GitHub</NavItem>
-                    </Nav>
+                        <Nav pullRight>
+                            <NavItem eventKey={1} href="https://github.com/ogaya/react-gridview-examples">GitHub</NavItem>
+                        </Nav>
                     </Navbar.Collapse>
                 </Navbar>
                 <Grid className="page">
                     <Col xs={12} md={2}>
-                        <Nav bsStyle="pills" stacked activeKey={hash}>
+                        <Nav bsStyle="pills" className="mnav" stacked activeKey={hash}>
                             <NavItem eventKey={BASIC_EXAMPLE_HASH} href={BASIC_EXAMPLE_HASH}>Basic Example</NavItem>
                             <NavItem eventKey={EDIT_CELL_HASH} href={EDIT_CELL_HASH}>Edit Cell</NavItem>
                             <NavItem eventKey={EDIT_BORDER_HASH} href={EDIT_BORDER_HASH}>Edit border</NavItem>
@@ -129,7 +140,7 @@ class Main extends React.Component<{}, State>{
                         </Nav>
                     </Col>
                     <Col xs={12} md={8}>
-                        <Tabs defaultActiveKey={1} animation={false}>
+                        <Tabs activeKey={this.state.tabKey} animation={false} onSelect={this._tabSelect}>
                             <Tab tabClassName="ctab" className="tab-com" title="demo" eventKey={1}>
                                 {pickDemo(hash)}
                             </Tab>

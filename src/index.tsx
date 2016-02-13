@@ -139,7 +139,7 @@ class Main extends React.Component<{}, State>{
                     </Navbar.Header>
                     <Navbar.Collapse>
                         <Nav pullRight>
-                            <NavItem eventKey={1} href="https://github.com/ogaya/react-gridview-examples">GitHub</NavItem>
+                            <NavItem eventKey={1} href="https://github.com/ogaya/react-gridview">GitHub</NavItem>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

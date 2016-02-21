@@ -43,6 +43,10 @@ import "./save-and-load/index.css";
 const SaveAndLoadSrc = require("!raw!./save-and-load/index");
 const SaveAndLoadCss = require("!raw!./save-and-load/index.css");
 
+import {Calculate} from "./calculate";
+import "./calculate/index.css";
+const CalculateSrc = require("!raw!./calculate/index");
+const CalculateCss = require("!raw!./calculate/index.css");
 
 interface State {
     hash: string;
@@ -54,7 +58,7 @@ const EDIT_CELL_HASH = "#edit-cell";
 const EDIT_BORDER_HASH = "#edit-border";
 const HIDE_HEADER_HASH = "#hide-header";
 const SAVE_LOAD_HASH = "#save-and-load";
-
+const CALCULATE_HASH = "#calculate";
 
 function pickDemo(hash:string){
     switch(hash){
@@ -68,6 +72,8 @@ function pickDemo(hash:string){
             return <HideHeader/>;
         case SAVE_LOAD_HASH:
             return <SaveAndLoad/>;
+        case CALCULATE_HASH:
+            return <Calculate/>;
         default:
             return <div/>;
     }
@@ -85,6 +91,8 @@ function pickSrc(hash:string){
             return HideHeaderSrc;
         case SAVE_LOAD_HASH:
             return SaveAndLoadSrc;
+        case CALCULATE_HASH:
+            return CalculateSrc;
         default:
             return "";
     }
@@ -102,6 +110,8 @@ function pickCss(hash:string){
             return HideHeaderCss;
         case SAVE_LOAD_HASH:
             return SaveAndLoadCss;
+        case CALCULATE_HASH:
+            return CalculateCss;
         default:
             return "";
     }
@@ -151,6 +161,7 @@ class Main extends React.Component<{}, State>{
                             <NavItem eventKey={EDIT_BORDER_HASH} href={EDIT_BORDER_HASH}>Edit border</NavItem>
                             <NavItem eventKey={HIDE_HEADER_HASH} href={HIDE_HEADER_HASH}>Hide Header</NavItem>
                             <NavItem eventKey={SAVE_LOAD_HASH} href={SAVE_LOAD_HASH}>Save & Load</NavItem>
+                            <NavItem eventKey={CALCULATE_HASH} href={CALCULATE_HASH}>Calculate</NavItem>
                         </Nav>
                     </Col>
                     <Col xs={12} md={8}>
